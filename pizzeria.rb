@@ -10,3 +10,6 @@ w = Waiter.new(menu, kitchen)
 
 w.greet_guest #calling the waiter to greet guest
 w.serve_guest #calling the waiter to serve guest
+while(w.serving?) do
+  w.serve_guest
+end

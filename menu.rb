@@ -1,7 +1,6 @@
 require './dish'
 require './ingredient'
 
-
 class Menu
 
   def initialize #initialize niet toegankelijk voor buiten de method.
