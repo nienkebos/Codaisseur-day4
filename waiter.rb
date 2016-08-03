@@ -1,10 +1,9 @@
-require './menu'
-
 class Waiter
 #binnen de class taken voor de waiter: methods
 
-  def initialize(menu)
+  def initialize(menu, kitchen) #.new roept initialize op, altijd bovenaan
     @menu = menu
+    @kitchen = kitchen
   end
 
   def greet_guest
@@ -24,6 +23,7 @@ class Waiter
       when 1
         p "Let me get the menu..."
         list_menu
+        order_food(gets.chomp.to_i)
       when 2
         p "Thank you for your visit."
       else
@@ -32,9 +32,14 @@ class Waiter
   end
 
   def list_menu
-    @menu.contents.each do |recipe|
-      p "#{recipe.name}"
+    @menu.contents.each_with_index do |dish, index|
+      p "#{index}. #{dish.name}"
     end
+  end
+
+  def order_food(choice)
+    dish = @menu.contents[choice]
+    @kitchen.order(dish)
   end
 
 
