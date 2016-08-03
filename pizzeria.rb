@@ -13,3 +13,4 @@ w.serve_guest #calling the waiter to serve guest
 while(w.serving?) do
   w.serve_guest
 end
+w.check

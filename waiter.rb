@@ -5,8 +5,8 @@ class Waiter
   def initialize(menu, kitchen) #.new roept initialize op, altijd bovenaan
     @menu = menu #als waiter opgeroepen is, is ook de content van @menu toegankelijk
     @kitchen = kitchen
-    @check = Check.new
     @serving = true
+    @check = Check.new
   end
 
   def greet_guest
@@ -28,6 +28,7 @@ class Waiter
         list_menu
         order_food(gets.chomp.to_i)
       when 2
+        p "Your total price is #{@check.sum}"
         p "Thank you for your visit."
         @serving = false
       else
@@ -37,14 +38,17 @@ class Waiter
 
   def list_menu
     @menu.contents.each_with_index do |dish, index|
-      #loops door contents in menu.rb dus array @menu
+      #loop door contents in menu.rb dus array @menu
       p "#{index}. #{dish.name}"
     end
   end
 
-  def order_food(choice)
-    dish = @menu.contents[choice]
-    if @kitchen.order(dish)
+  def order_food(choice) #choice = from order_food(gets.chomp.to_1)
+    case(choice)
+    when choice != @menu.contents[choice]
+      p "This is not on the menu. Choose again"
+    when dish = @menu.contents[choice] # [] get item from array contents by index
+      @kitchen.order(dish)
       p "Dish is on its way"
       @check.add(dish)
     else
@@ -54,6 +58,10 @@ class Waiter
 
   def serving?
     return @serving
+  end
+
+  def check
+    @check.sum
   end
 
 

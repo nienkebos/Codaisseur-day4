@@ -10,9 +10,7 @@ class Kitchen
     p "KITCHEN: Order received for #{dish.name}"
     p "I'm gonna need some:"
 
-    dish.ingredients.each do |ingredient|
-      p "#{ingredient.amount} - #{ingredient.name}"
-    end
+    dish.ingredients.each {|ingredient| p "#{ingredient.amount} - #{ingredient.name}"}
     @storage.fetch(dish.ingredients)
   end
 
