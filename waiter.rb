@@ -1,8 +1,7 @@
 class Waiter
 #binnen de class taken voor de waiter: methods
-
   def initialize(menu, kitchen) #.new roept initialize op, altijd bovenaan
-    @menu = menu
+    @menu = menu #als waiter opgeroepen is, is ook de content van @menu toegankelijk
     @kitchen = kitchen
   end
 
@@ -33,13 +32,18 @@ class Waiter
 
   def list_menu
     @menu.contents.each_with_index do |dish, index|
+      #loops door contents in menu.rb dus array @menu
       p "#{index}. #{dish.name}"
     end
   end
 
   def order_food(choice)
     dish = @menu.contents[choice]
-    @kitchen.order(dish)
+    if @kitchen.order(dish)
+      p "Dish is on its way"
+    else
+      p "Sorry, this dish is not available"
+    end
   end
 
 

@@ -1,10 +1,13 @@
-class Menu
 require './dish'
 require './ingredient'
 
-  def initialize
+
+class Menu
+
+  def initialize #initialize niet toegankelijk voor buiten de method.
+    #daarom een nieuwe method: def contents (zie onder)
     @menu = []
-    @menu << Dish.new("margharita", [
+    @menu << Dish.new("margharita", [ #roept de method in dish.rb aan
       Ingredient.new(Ingredient::TOMATO, 3),
       Ingredient.new(Ingredient::DOUGH, 0.25),
       Ingredient.new(Ingredient::MOZZARELLA, 0.2)
@@ -24,7 +27,7 @@ require './ingredient'
   end
 
   def contents
-    @menu
+    @menu #om content van @menu naar buiten te brengen, bv in pizzeria.rb
   end
 
 end

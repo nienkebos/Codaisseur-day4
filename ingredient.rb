@@ -12,11 +12,15 @@ class Ingredient
   end
 
   def name
-    @name    
+    @name
   end
 
   def amount
     @amount
+  end
+
+  def use(amount)
+    @amount -= amount
   end
 
 end
