@@ -1,5 +1,8 @@
-require './waiter'
-w = Waiter.new
-w.greet_guest
-order_number = w.serve_guest
-p w.take_order(order_number)
+require './waiter' #waiter file(blueprint) gelinkt
+
+menu = Menu.new
+
+w = Waiter.new(menu)
+#physical waiter in restaurant gemaakt(waiter kent menu)
+w.greet_guest #calling the waiter to greet guest
+w.serve_guest #calling the waiter to serve guest
