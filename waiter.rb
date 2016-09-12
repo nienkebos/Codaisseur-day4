@@ -44,15 +44,17 @@ class Waiter
   end
 
   def order_food(choice) #choice = from order_food(gets.chomp.to_1)
-    case(choice)
-    when choice != @menu.contents[choice]
-      p "This is not on the menu. Choose again"
-    when dish = @menu.contents[choice] # [] get item from array contents by index
-      @kitchen.order(dish)
-      p "Dish is on its way"
-      @check.add(dish)
+    dish = @menu.contents[choice]
+    if dish
+      if  # [] get item from array contents by index
+        @kitchen.order(dish)
+        p "Dish is on its way"
+        @check.add(dish) #dish toevoegen aan @items array in check
+      else
+        p "Sorry, this dish is not available, out of stock"
+      end
     else
-      p "Sorry, this dish is not available"
+      p "This dish is not on the menu, choose again"
     end
   end
 

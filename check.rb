@@ -10,9 +10,9 @@ class Check
   end
 
   def sum
-    @total_amount = 0
-    @items.each {|item| @total_amount += item.price}
-    @total_amount
+    total_amount = 0
+    @items.each {|item| total_amount += item.price}
+    total_amount
   end
 
 end

@@ -9,12 +9,14 @@ class Storage
     ]
   end
 
-  def fetch(ingredients)
+  def fetch(ingredients) #kitchen kijkt of voorraad voldoende is
     ingredients.each do |ingredient|
       item = @items.detect{|item| item.name == ingredient.name}
+      #itemnaam en ingredientnaam vergelijken
       if item
         item.use ingredient.amount
         #item.use/ingredient.amount in ingredient.rb
+        #als itemnaam en ingredientnaam overeenkomen, gaat @storage in kitchen aan
       else
         return false
       end
